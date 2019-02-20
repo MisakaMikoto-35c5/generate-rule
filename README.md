@@ -9,3 +9,4 @@
 name-hostnames.conf: 只包含域名分流规则或阻止规则的文件
 name-rejection.conf: 只包含正则阻止规则的文件
 ```
+[输出样例](https://lab.wsl.moe/quantumult_rules_test/)
