@@ -33,7 +33,7 @@
             "name": "GFWlist",
             "type": "gfwlist",
             "default_action": "PROXY",
-            "unsupport_convert": "DOMAIN-SUFFIX",
+            "unsupport_convert": "HOST-SUFFIX",
             "unsupport_action": "PROXY",
             "file_prefix": "gfwlist",
             "url": "https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt"

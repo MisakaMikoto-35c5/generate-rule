@@ -91,7 +91,7 @@ class ProxyRuleUpdater:
                 hostnames = file_header
                 regex_rejection = file_header
                 for i in results:
-                    if i['prefer'] == 'DOMAIN-SUFFIX' or i['prefer'] == 'DOMAIN-KEYWORD' or i['prefer'] == 'DOMAIN':
+                    if i['prefer'] == 'HOST-SUFFIX' or i['prefer'] == 'HOST-KEYWORD' or i['prefer'] == 'HOST':
                         if i['domain'] == '':
                             continue
                         if self.__uniq(i['domain']):
@@ -281,16 +281,19 @@ class ProxyRuleUpdater:
                     # 如果不是的话就改用域名关键字
                     if last_str == '/' or last_str == '^':
                         if subdomain:
-                            prefer = 'DOMAIN-SUFFIX'
+                            prefer = 'HOST-SUFFIX'
                         else:
-                            prefer = 'DOMAIN'
+                            prefer = 'HOST'
                     else:
-                        prefer = 'DOMAIN-KEYWORD'
+                        if unsupport_convert != 'REGEX':
+                            prefer = unsupport_convert
+                        else:
+                            prefer = 'HOST-KEYWORD'
                 else:
                     # 如果明显不是域名就改用正则
                     prefer = unsupport_convert
                 action = ''
-                if prefer == 'DOMAIN' or prefer == 'DOMAIN-SUFFIX' or prefer == 'DOMAIN-KEYWORD': # 如果是域名就用默认操作
+                if prefer == 'HOST' or prefer == 'HOST-SUFFIX' or prefer == 'HOST-KEYWORD': # 如果是域名就用默认操作
                     if self.check_str_is_domain(generated_domain) == False: # 如果规则不支持用域名的方式但是用户要求用域名的时候把规则偏好改回正则避免出问题
                         prefer = 'REGEX'
                         action = unsupport_action
