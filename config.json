@@ -1,7 +1,63 @@
 {
+    "dns_servers": [
+        "8.8.8.8",
+        "1.1.1.1"
+    ],
+    "surfboard_output": {
+        "output_name": "surfboard-rules.conf",
+        "parts": [
+            {
+                "type": "base",
+                "files": [
+                    "./surfboard/surfboard-template.conf",
+                    "./surfboard/surfboard-custom-rule-pre.conf"
+                ]
+            },
+            {
+                "type": "hostnames",
+                "minify": true,
+                "action_replace": {
+                    "REJECT": "AdBlock"
+                },
+                "files": [
+                    "./generated_rules/custom-hostnames.conf",
+                    "./generated_rules/easylist-hostnames.conf",
+                    "./generated_rules/easylist-chn-hostnames.conf",
+                    "./generated_rules/adguard-dns-hostnames.conf"
+                ]
+            },
+            {
+                "type": "base",
+                "files": [
+                    "./surfboard/surfboard-custom-rule-medium.conf"
+                ]
+            },
+            {
+                "type": "hostnames",
+                "files": [
+                    "./generated_rules/gfwlist-hostnames.conf"
+                ]
+            },
+            {
+                "type": "base",
+                "files": [
+                    "./surfboard/surfboard-custom-rule-last.conf"
+                ]
+            }
+        ]
+    },
     "servers": [
     ],
     "rules_list": [
+        {
+            "name": "Custom Rules",
+            "type": "adblock",
+            "default_action": "REJECT",
+            "unsupport_convert": "REGEX",
+            "unsupport_action": "REJECT",
+            "file_prefix": "custom",
+            "url": "file://./adblock/custom-block-domains.txt"
+        },
         {
             "name": "EasyPrivacy",
             "type": "adblock",
@@ -53,6 +109,14 @@
             "action": "REJECT",
             "file_prefix": "mvps-hosts",
             "url": "http://winhelp2002.mvps.org/hosts.txt"
+        },
+        {
+            "name": "AdGuard DNS Filter",
+            "type": "adblock",
+            "action_type": "HOST-SUFFIX",
+            "action": "REJECT",
+            "file_prefix": "adguard-dns",
+            "url": "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt"
         }
     ]
 }

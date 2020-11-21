@@ -1,0 +1,92 @@
+![Adblock Plus 2.0]
+
+! 阿里系
+||cnzz.com^
+||cnzz.cn^
+||umeng.com^
+||umengcloud.com^
+||alimama.com^
+||tanx.com^
+||tce.taobao.com^
+||ald.taobao.com^
+||fourier.taobao.com^
+||uaction.alicdn.com^
+||count.taobao.com^
+||suggest.taobao.com^
+||ai.taobao.com^
+||temai.taobao.com^
+||s.click.taobao.com^
+||ngc.aliyuncs.com^
+
+! 百度系
+||hmma.baidu.com^
+||gsp0.baidu.com^
+||gsp1.baidu.com^
+||gsp2.baidu.com^
+||gsp3.baidu.com^
+||gsp4.baidu.com^
+||gsp5.baidu.com^
+||msite.baidu.com^
+||openrcv.baidu.com^
+||openrcv.e.shifen.com^
+||push.zhanzhang.baidu.com^
+||dup.baidustatic.com^
+||zz.baidustatic.com^
+
+! 腾讯系
+||mazu.m.qq.com^
+||mazu.3g.qq.com^
+||ten.sngapm.qq.com^
+||yyb.eve.mdt.qq.com^
+||mayyb.cross.3g.qq.com^
+||tools.3g.qq.com^
+||lcsdk.3g.qq.com^
+||mi.gdt.qq.com^
+||wspeed.qq.com^
+||ts.qq.com^
+||configsvr.msf.3g.qq.com^
+
+! 头条系
+||dm.pstatp.com^
+||dm.toutiao.com^
+||toblog.ctobsnssdk.com^
+||tobapplog.ctobsnssdk.com^
+||pglstatp-toutiao.com^
+||pangolin-sdk-toutiao.com^
+||dig.bdurl.net^
+||bds.snssdk.com^
+||sdfp.snssdk.com^
+||sf1-ttcdn-tos.pstatp.com^
+
+! 艾瑞信（跟踪）
+||iresearch.cn^
+||iresearch.com.cn^
+||iresearchchina.com^
+
+! 其它第三方广告提供商
+||adhubbj.xyz^
+||duomai.com^
+||bwyh.cn^
+
+! 其它第三方跟踪器
+||log.reyun.com^
+||pv.kuaizhan.com^
+
+! 网站内部跟踪器
+||bigdata.samsung.com.cn^
+||pv.news18a.com^
+||pv.sohu.com^
+||data.bilibili.com^
+||analytics.95516.com^
+
+! Crash Analytics
+||crashlytics.com^
+||pingma.qq.com^
+||bugly.qq.com^
+||mazu.m.qq.com^
+
+! 国产病毒下载器
+||05cg.com^
+
+! 强制跳转 app 下载页面
+||oia.zhihu.com^
