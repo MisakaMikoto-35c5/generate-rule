@@ -1,5 +1,12 @@
 ![Adblock Plus 2.0]
 
+! 通用的激进规则
+||analytics.
+||log.
+||loggw.
+||logs.
+||beacon.
+
 ! 阿里系
 ||cnzz.com^
 ||cnzz.cn^
@@ -71,6 +78,7 @@
 ! 其它第三方跟踪器
 ||log.reyun.com^
 ||pv.kuaizhan.com^
+||in.appcenter.ms^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^
@@ -90,3 +98,14 @@
 
 ! 强制跳转 app 下载页面
 ||oia.zhihu.com^
+
+! 某些不良厂商会强制跳转到这个域名赚广告费
+||u.jd.com^
+
+! 拼多多（测试规则）
+||cmtw.pinduoduo.com^
+||cmta.pinduoduo.com^
+||th.pinduoduo.com^
+||tp.pinduoduo.com^
+||titan.pinduoduo.com^
+||manortk.pinduoduo.com^

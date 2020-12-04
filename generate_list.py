@@ -439,6 +439,6 @@ if __name__ == '__main__':
     foo = ProxyRuleUpdater()
     foo.OUTPUT_PATH = './generated_rules'
     config_file = './config.json'
-    #foo.gen_rule(config_file)
+    foo.gen_rule(config_file)
     foo.make_surfboard_rules(config_file)
     #foo._test_adblock_rule()
