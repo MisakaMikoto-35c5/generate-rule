@@ -74,11 +74,13 @@
 ||adhubbj.xyz^
 ||duomai.com^
 ||bwyh.cn^
+||union.360.cn^
 
 ! 其它第三方跟踪器
 ||log.reyun.com^
 ||pv.kuaizhan.com^
 ||in.appcenter.ms^
+||openinstall.io^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^
@@ -86,6 +88,7 @@
 ||pv.sohu.com^
 ||data.bilibili.com^
 ||analytics.95516.com^
+||thirdcdata.58.com^
 
 ! Crash Analytics
 ||crashlytics.com^
@@ -101,6 +104,21 @@
 
 ! 某些不良厂商会强制跳转到这个域名赚广告费
 ||u.jd.com^
+
+! 可能有跟踪行为的第三方 SDK
+||getui.com^
+||getui.net^
+||gepush.com^
+||jpush.cn^
+||jpush.io^
+||mob.com^
+||fp-it.fengkongcloud.com^
+! ||fengkongcloud.com^
+||sousoudus.com^
+||junshizhan.cn^
+||xinxiansk.com^
+||appjiagu.com^
+||sayhi.360.cn^
 
 ! 拼多多（测试规则）
 ||cmtw.pinduoduo.com^
