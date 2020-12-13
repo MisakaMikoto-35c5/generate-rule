@@ -18,12 +18,14 @@
 ||ald.taobao.com^
 ||fourier.taobao.com^
 ||uaction.alicdn.com^
+||adashbc.ut.taobao.com^
 ||count.taobao.com^
 ||suggest.taobao.com^
 ||ai.taobao.com^
 ||temai.taobao.com^
 ||s.click.taobao.com^
 ||ngc.aliyuncs.com^
+||unidesk.alicdn.com^
 
 ! 百度系
 ||hmma.baidu.com^
@@ -39,6 +41,9 @@
 ||push.zhanzhang.baidu.com^
 ||dup.baidustatic.com^
 ||zz.baidustatic.com^
+||feed-image.baidu.com^
+||dxp.baidu.com^
+||lick-bes.baidu.com^
 
 ! 腾讯系
 ||mazu.m.qq.com^
@@ -52,10 +57,16 @@
 ||wspeed.qq.com^
 ||ts.qq.com^
 ||configsvr.msf.3g.qq.com^
+||pingma.qq.com^
+||bugly.qq.com^
+||mazu.m.qq.com^
+||tdid.m.qq.com^
+||cgi.kandian.qq.com^
 
 ! 头条系
 ||dm.pstatp.com^
 ||dm.toutiao.com^
+||dm.bytedance.com^
 ||toblog.ctobsnssdk.com^
 ||tobapplog.ctobsnssdk.com^
 ||pglstatp-toutiao.com^
@@ -81,20 +92,25 @@
 ||pv.kuaizhan.com^
 ||in.appcenter.ms^
 ||openinstall.io^
+||networkbench.com^
+||tingyun.com^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^
-||pv.news18a.com^
-||pv.sohu.com^
-||data.bilibili.com^
-||analytics.95516.com^
-||thirdcdata.58.com^
+|pv.news18a.com^
+|pv.sohu.com^
+|data.bilibili.com^
+|analytics.95516.com^
+|thirdcdata.58.com^
+|cdata.58.com^
+|magicisland.58.com^
+|tpc-info.kakamobi.cn^
+|oort-shipper.kakamobi.cn^
+|telepathy.kakamobi.com^
+|jiaxiao-awd.kakamobi.cn^
 
 ! Crash Analytics
 ||crashlytics.com^
-||pingma.qq.com^
-||bugly.qq.com^
-||mazu.m.qq.com^
 
 ! 国产病毒下载器
 ||05cg.com^
@@ -104,6 +120,8 @@
 
 ! 某些不良厂商会强制跳转到这个域名赚广告费
 ||u.jd.com^
+||vchangyi.com^
+||weisheng.com^
 
 ! 可能有跟踪行为的第三方 SDK
 ||getui.com^
@@ -127,3 +145,13 @@
 ||tp.pinduoduo.com^
 ||titan.pinduoduo.com^
 ||manortk.pinduoduo.com^
+||t-dsp.pinduoduo.com^
+||at.pinduoduo.com^
+
+! 小米
+||ccc.sys.miui.com^
+||ccc.sys.intl.miui.com^
+! 小米内置投屏服务
+||rp.hpplay.cn^
+||imdns.hpplay.cn^
+||misdkauth.hpplay.cn^

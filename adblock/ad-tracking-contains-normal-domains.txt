@@ -1,0 +1,7 @@
+![Adblock Plus 2.0]
+
+! 与正常服务共用的广告及跟踪域名
+
+! ||android.googleapis.com^
+||cloudauth-device.aliyuncs.com^
+||api.m.taobao.com^
