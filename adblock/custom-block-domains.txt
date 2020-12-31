@@ -7,6 +7,10 @@
 ||logs.
 ||beacon.
 
+! Google
+||app-measurement.com^
+||googletagmanager.com^
+
 ! 阿里系
 ||cnzz.com^
 ||cnzz.cn^
@@ -23,9 +27,26 @@
 ||suggest.taobao.com^
 ||ai.taobao.com^
 ||temai.taobao.com^
-||s.click.taobao.com^
 ||ngc.aliyuncs.com^
 ||unidesk.alicdn.com^
+||adashx.m.taobao.com^
+||adash.man.aliyuncs.com^
+||amdcopen.m.taobao.com^
+||umengacs.m.taobao.com^
+||umengjmacs.m.taobao.com^
+||acs4baichuan.m.taobao.com^
+||nbsdk-baichuan.alicdn.com^
+||beacon-api.aliyuncs.com^
+||optimus-ads.amap.com^
+||gaode-jmacs.m.taobao.com^
+||feedback-api.aliyuncs.com^
+||h-adashx.ut.taobao.com^
+||atm.youku.com^
+||iyes.youku.com^
+! 测试规则
+||umdc.aliapp.org^
+||hybrid.miniapp.taobao.com^
+||audid-api.taobao.com^
 
 ! 百度系
 ||hmma.baidu.com^
@@ -43,7 +64,7 @@
 ||zz.baidustatic.com^
 ||feed-image.baidu.com^
 ||dxp.baidu.com^
-||lick-bes.baidu.com^
+||click-bes.baidu.com^
 
 ! 腾讯系
 ||mazu.m.qq.com^
@@ -76,16 +97,32 @@
 ||sdfp.snssdk.com^
 ||sf1-ttcdn-tos.pstatp.com^
 
+! 京东
+||dg.k.jd.com^
+||orbit.jd.com^
+
+! 网易
+||lbs.netease.im^
+||crash.163.com^
+! 测试规则
+||interface3.music.163.com^
+||dun.163.com^
+
 ! 艾瑞信（跟踪）
 ||iresearch.cn^
 ||iresearch.com.cn^
 ||iresearchchina.com^
 
+! 360
+||50union.com^
+||union.360.cn^
+||appjiagu.com^
+||sayhi.360.cn^
+
 ! 其它第三方广告提供商
 ||adhubbj.xyz^
 ||duomai.com^
 ||bwyh.cn^
-||union.360.cn^
 
 ! 其它第三方跟踪器
 ||log.reyun.com^
@@ -94,6 +131,7 @@
 ||openinstall.io^
 ||networkbench.com^
 ||tingyun.com^
+||norma-external-collect.meizu.com^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^
@@ -108,6 +146,9 @@
 |oort-shipper.kakamobi.cn^
 |telepathy.kakamobi.com^
 |jiaxiao-awd.kakamobi.cn^
+
+! 数据收集，详见 https://tech.sina.com.cn/i/2019-03-25/doc-ihsxncvh5289363.shtml
+||zzhc.vnet.cn^
 
 ! Crash Analytics
 ||crashlytics.com^
@@ -124,19 +165,21 @@
 ||weisheng.com^
 
 ! 可能有跟踪行为的第三方 SDK
+@@|xfr-ss.getui.com^
+@@||talk.getui.com^
 ||getui.com^
 ||getui.net^
 ||gepush.com^
 ||jpush.cn^
 ||jpush.io^
+!||japps.cn^
 ||mob.com^
+||talkingdata.com^
 ||fp-it.fengkongcloud.com^
 ! ||fengkongcloud.com^
 ||sousoudus.com^
 ||junshizhan.cn^
 ||xinxiansk.com^
-||appjiagu.com^
-||sayhi.360.cn^
 
 ! 拼多多（测试规则）
 ||cmtw.pinduoduo.com^
@@ -147,6 +190,7 @@
 ||manortk.pinduoduo.com^
 ||t-dsp.pinduoduo.com^
 ||at.pinduoduo.com^
+||lp.pinduoduo.com^
 
 ! 小米
 ||ccc.sys.miui.com^

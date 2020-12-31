@@ -8,6 +8,10 @@
         "parts": [
             {
                 "type": "base",
+                "action_replace": {
+                    "REJECT": "AdBlock",
+                    "DIRECT": "DefaultAction"
+                },
                 "files": [
                     "./surfboard/surfboard-template.conf",
                     "./surfboard/surfboard-custom-rule-pre.conf"
@@ -17,7 +21,8 @@
                 "type": "hostnames",
                 "minify": true,
                 "action_replace": {
-                    "REJECT": "AdBlock"
+                    "REJECT": "AdBlock",
+                    "DIRECT": "DefaultAction"
                 },
                 "files": [
                     "./generated_rules/custom-hostnames.conf",

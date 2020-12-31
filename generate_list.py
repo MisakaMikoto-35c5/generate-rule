@@ -231,7 +231,7 @@ class ProxyRuleUpdater:
             now_rule_string = ''
         return rules
 
-    def decode_adblock_rule(self, rules_list, default_action = 'REJECT', unsupport_convert = 'REGEX', unsupport_action = 'REJECT', exclude_action = 'IGNORE'):
+    def decode_adblock_rule(self, rules_list, default_action = 'REJECT', unsupport_convert = 'REGEX', unsupport_action = 'REJECT', exclude_action = 'DIRECT'):
         rules = []
         rules_raw = rules_list.split('\n')
         # scheme: ^(https?://)?
@@ -262,21 +262,24 @@ class ProxyRuleUpdater:
             regex_only = False # 标记规则只能用正则
             skip_char = 0 # 标记跳过多少字
             unsupport_rule = False # 标记不支持的规则
+            is_exclude_rule = False
             for now_char in rule:
                 char_path += 1
                 if skip_char > 0:
                     skip_char -= 1
                     continue
                 if char_path == 0:
+                    if now_char == '@' and rule[1] == '@':
+                        skip_char = 1
+                        char_path = -2
+                        is_exclude_rule = True
+                        continue
                     if now_char == '|': # 检查开头是否匹配
                         prefix_match = True
                         generated_regex = '^'
                         prev_str = now_char
                         domain_end = False
                         continue
-                    elif now_char == '@': # 去掉排除项
-                        unsupport_rule = True
-                        break
                     elif now_char == '/': # 正则规则，直接跳过
                         if rule[-1] == '/':
                             regex_only = True
@@ -342,12 +345,12 @@ class ProxyRuleUpdater:
                     else: # 如果上一个字不是分隔符就不加问号
                         generated_regex = generated_regex[0:len(generated_regex)-1] + '$'
                 maybe_domain_only = True
-                if first_str != '|':
+                if first_str != '|' and not rule.startswith('@@|'):
                     maybe_domain_only = False
-                last_str = rule[char_path]
+                last_str = rule[-1]
                 if last_str == '$':
                     char_path -= 1
-                    last_str = rule[char_path]
+                    last_str = rule[-2]
                 if (maybe_domain_only and (path_length == 0 or path_length == 1)):
                     # 判断是否只包含域名的字符串，然后判断一下 path 的长度
                     # 先决条件满足以后检查一下最后面是不是 / 或分隔符，如果是的话就分域名或者子域名
@@ -374,6 +377,8 @@ class ProxyRuleUpdater:
                         action = default_action
                 else:
                     action = unsupport_action # 如果不是就用正则的
+                if is_exclude_rule and prefer != 'REGEX': # 判断是否为排除规则
+                    action = exclude_action
                 rules.append({'domain': generated_domain, 'regex': generated_regex, 'prefer': prefer, 'action': action})
         return rules
 
@@ -439,6 +444,6 @@ if __name__ == '__main__':
     foo = ProxyRuleUpdater()
     foo.OUTPUT_PATH = './generated_rules'
     config_file = './config.json'
+    #foo._test_adblock_rule()
     foo.gen_rule(config_file)
     foo.make_surfboard_rules(config_file)
-    #foo._test_adblock_rule()

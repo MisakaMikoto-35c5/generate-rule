@@ -5,3 +5,5 @@
 ! ||android.googleapis.com^
 ||cloudauth-device.aliyuncs.com^
 ||api.m.taobao.com^
+||amdc.m.taobao.com^
+||s.click.taobao.com^
