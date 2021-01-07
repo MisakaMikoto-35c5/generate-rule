@@ -125,13 +125,15 @@
 ||bwyh.cn^
 
 ! 其它第三方跟踪器
-||log.reyun.com^
+||reyun.com^
+||trackingio.com^
 ||pv.kuaizhan.com^
 ||in.appcenter.ms^
 ||openinstall.io^
 ||networkbench.com^
 ||tingyun.com^
 ||norma-external-collect.meizu.com^
+||sdk.api.oaid.wocloud.cn^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^

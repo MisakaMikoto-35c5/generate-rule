@@ -85,20 +85,23 @@ class ProxyRuleUpdater:
                 # 解析 AdBlock 规则和 GFWlist 规则
                 default_action = self.get_config_value(rules_url, 'default_action', 'REJECT') # 默认操作
                 unsupport_convert = self.get_config_value(rules_url, 'unsupport_convert', 'REGEX') # 不能完全支持规则时的匹配方式
+                exclude_action = self.get_config_value(rules_url, 'exclude_action', 'DIRECT') # 排除规则的操作
                 unsupport_action = self.get_config_value(rules_url, 'unsupport_action', 'REJECT') # 不能完全支持规则时的操作
                 file_prefix = self.get_config_value(rules_url, 'file_prefix', rules_url['name']) # 文件前缀
 
                 if unsupport_convert == 'REGEX' and unsupport_action != 'REJECT':
                     raise IllegalRuleException('由于软件限制，正则表达式无法使用除拒绝外的所有操作。')
+
                 print('Downloading: ' + rules_url['name'])
                 if rules_type == 'adblock':
-                    results = self.download_adblock_rule(rules_download_url, default_action, unsupport_convert, unsupport_action)
+                    results = self.download_adblock_rule(rules_download_url, default_action, unsupport_convert, unsupport_action, exclude_action)
                 elif rules_type == 'gfwlist':
-                    results = self.download_gfwlist_rule(rules_download_url, default_action, unsupport_convert, unsupport_action)
+                    results = self.download_gfwlist_rule(rules_download_url, default_action, unsupport_convert, unsupport_action, exclude_action)
                 print('Download finish: ' + rules_url['name'])
 
                 hostnames = file_header
-                unbound_dns = file_header
+                unbound_dns_forward = file_header
+                unbound_dns_rejection = file_header
                 regex_rejection = file_header
                 for i in results:
                     if i['prefer'] == 'HOST-SUFFIX' or i['prefer'] == 'HOST-KEYWORD' or i['prefer'] == 'HOST':
@@ -108,9 +111,9 @@ class ProxyRuleUpdater:
                             hostnames += i['prefer'] + ',' + i['domain'] + ',' + i['action'] + '\n'
                         if i['prefer'] != 'HOST-KEYWORD':
                             if i['action'] == 'REJECT':
-                                unbound_dns += 'local-zone: "' + i['domain'] + '" refuse\n'
+                                unbound_dns_rejection += 'local-zone: "' + i['domain'] + '" refuse\n'
                             else:
-                                unbound_dns += 'forward-zone:\n\tname: "' + i['domain'] + '."\n' + unbound_target_dns + '\n'
+                                unbound_dns_forward += 'forward-zone:\n\tname: "' + i['domain'] + '."\n' + unbound_target_dns + '\n'
                     elif i['prefer'] == 'REGEX':
                         if i['action'] != 'REJECT':
                             continue
@@ -118,7 +121,8 @@ class ProxyRuleUpdater:
                             continue
                         regex_rejection += i['regex'] + '\n'
                 self.save_file(self.OUTPUT_PATH + '/' + file_prefix + '-hostnames.conf', hostnames, file_header)
-                self.save_file(self.OUTPUT_PATH + '/' + file_prefix + '-unbound_dns.conf', unbound_dns, file_header)
+                self.save_file(self.OUTPUT_PATH + '/' + file_prefix + '-forward-unbound_dns.conf', unbound_dns_forward, file_header)
+                self.save_file(self.OUTPUT_PATH + '/' + file_prefix + '-rejection-unbound_dns.conf', unbound_dns_rejection, file_header)
                 self.save_file(self.OUTPUT_PATH + '/' + file_prefix + '-rejection.conf', regex_rejection, file_header)
 
     def make_surfboard_rules(self, config_path):
@@ -183,14 +187,26 @@ class ProxyRuleUpdater:
         rules = self.decode_hosts_rule(http_content['content'])
         return rules
 
-    def download_adblock_rule(self, rules_download_url, default_action, unsupport_convert, unsupport_action):
+    def download_adblock_rule(self, rules_download_url, default_action, unsupport_convert, unsupport_action, exclude_action):
         http_content = self.get_web_content(rules_download_url)
-        rules = self.decode_adblock_rule(http_content['content'], default_action, unsupport_convert, unsupport_action)
+        rules = self.decode_adblock_rule(
+            http_content['content'],
+            default_action,
+            unsupport_convert,
+            unsupport_action,
+            exclude_action
+        )
         return rules
 
-    def download_gfwlist_rule(self, rules_download_url, default_action, unsupport_convert, unsupport_action):
+    def download_gfwlist_rule(self, rules_download_url, default_action, unsupport_convert, unsupport_action, exclude_action):
         http_content = self.get_web_content(rules_download_url)
-        rules = self.decode_adblock_rule(base64.b64decode(http_content['content']).decode('utf-8'), default_action, unsupport_convert, unsupport_action)
+        rules = self.decode_adblock_rule(
+            base64.b64decode(http_content['content']).decode('utf-8'),
+            default_action,
+            unsupport_convert,
+            unsupport_action,
+            exclude_action
+        )
         return rules
     
     def decode_hosts_rule(self, rules_list):
@@ -270,6 +286,8 @@ class ProxyRuleUpdater:
                     continue
                 if char_path == 0:
                     if now_char == '@' and rule[1] == '@':
+                        if exclude_action == 'IGNORE':
+                            break
                         skip_char = 1
                         char_path = -2
                         is_exclude_rule = True
@@ -335,7 +353,7 @@ class ProxyRuleUpdater:
                 generated_regex += now_char
                 prev_str = now_char # 记录最后一个字是什么
             if unsupport_rule == False:
-                if generated_domain == 'localhost':
+                if generated_domain == 'localhost' or generated_domain == 'ip6_localhost':
                     continue
                 if prev_str == '^': # 如果最后是分隔符，根据 AdBlock 的规则，在最后的分隔符可以没有
                     generated_regex += '?'
@@ -345,12 +363,16 @@ class ProxyRuleUpdater:
                     else: # 如果上一个字不是分隔符就不加问号
                         generated_regex = generated_regex[0:len(generated_regex)-1] + '$'
                 maybe_domain_only = True
-                if first_str != '|' and not rule.startswith('@@|'):
+                if first_str != '|' and not is_exclude_rule:
                     maybe_domain_only = False
-                last_str = rule[-1]
+                rule_end_path = char_path
+                if is_exclude_rule:
+                    rule_end_path += 2
+                last_str = rule[rule_end_path]
                 if last_str == '$':
                     char_path -= 1
-                    last_str = rule[-2]
+                    rule_end_path -= 1
+                    last_str = rule[rule_end_path]
                 if (maybe_domain_only and (path_length == 0 or path_length == 1)):
                     # 判断是否只包含域名的字符串，然后判断一下 path 的长度
                     # 先决条件满足以后检查一下最后面是不是 / 或分隔符，如果是的话就分域名或者子域名

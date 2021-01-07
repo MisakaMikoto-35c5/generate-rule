@@ -60,6 +60,7 @@
             "default_action": "REJECT",
             "unsupport_convert": "REGEX",
             "unsupport_action": "REJECT",
+            "exclude_action": "DIRECT",
             "file_prefix": "custom",
             "url": "file://./adblock/custom-block-domains.txt"
         },
@@ -69,6 +70,7 @@
             "default_action": "REJECT",
             "unsupport_convert": "REGEX",
             "unsupport_action": "REJECT",
+            "exclude_action": "IGNORE",
             "file_prefix": "easyprivacy",
             "url": "https://easylist.to/easylist/easyprivacy.txt"
         },
@@ -78,6 +80,7 @@
             "default_action": "REJECT",
             "unsupport_convert": "REGEX",
             "unsupport_action": "REJECT",
+            "exclude_action": "IGNORE",
             "file_prefix": "easylist",
             "url": "https://easylist.to/easylist/easylist.txt"
         },
@@ -87,6 +90,7 @@
             "default_action": "REJECT",
             "unsupport_convert": "REGEX",
             "unsupport_action": "REJECT",
+            "exclude_action": "IGNORE",
             "file_prefix": "easylist-chn",
             "url": "https://easylist-downloads.adblockplus.org/easylistchina.txt"
         },
@@ -120,6 +124,7 @@
             "type": "adblock",
             "action_type": "HOST-SUFFIX",
             "action": "REJECT",
+            "exclude_action": "IGNORE",
             "file_prefix": "adguard-dns",
             "url": "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_15_DnsFilter/filter.txt"
         }
