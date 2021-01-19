@@ -2,7 +2,7 @@
 
 ! 通用的激进规则
 ||analytics.
-||log.
+!||log.
 ||loggw.
 ||logs.
 ||beacon.
@@ -83,6 +83,10 @@
 ||mazu.m.qq.com^
 ||tdid.m.qq.com^
 ||cgi.kandian.qq.com^
+! About following 3 domains, referer to https://citizenlab.ca/2016/03/privacy-security-issues-qq-browser/ to learn more.
+||imtt.qq.com^
+||wup.html5.qq.com^
+||masterconn.qq.com^
 
 ! 头条系
 ||dm.pstatp.com^
@@ -167,8 +171,11 @@
 ||weisheng.com^
 
 ! 可能有跟踪行为的第三方 SDK
-@@|xfr-ss.getui.com^
+@@||talk.gepush.com^
 @@||talk.getui.com^
+@@|xfr-ss.getui.com^
+@@|c-ss.getui.com^
+@@|cm-10-26.getui.com^
 ||getui.com^
 ||getui.net^
 ||gepush.com^
