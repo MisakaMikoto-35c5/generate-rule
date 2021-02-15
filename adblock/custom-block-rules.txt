@@ -36,4 +36,5 @@ blog.csdn.net##.floatR.feed
 ||baidustatic.com$third-party
 
 ! 包含了令人讨厌的脚本的网站
-||vircloud.net$image,script,xmlhttprequest
+||vircloud.net^$image,script,xmlhttprequest
+||cnblogs.com/*Marydon20170307^$script
