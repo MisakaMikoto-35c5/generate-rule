@@ -1,9 +1,11 @@
 ![Adblock Plus 2.0]
 
 ||web.archive.org/save/*.js
-/log
+^log^$script,image,xmlhttprequest
 /$beacon
-^track
+^track^$script,image,xmlhttprequest
+^ga^$script,image,xmlhttprequest
+^analytics^$script,image,xmlhttprequest
 
 ^alimama.com
 ^tce.taobao.com
@@ -12,15 +14,15 @@
 ||g.alicdn.com/tb/tracker
 ||g.alicdn.com/undefined
 ||ip.sb$third-party
-/aplus_$script
-/trace.js
-/jstracker.js
-/tb/tracker/index.js
-/collina.js
-um.js|
-@@um.js|$domain=login.taobao.com
-/tanx$xmlhttprequest,script
-/loggw$xmlhttprequest,script
+^aplus_$script
+^trace.js^
+^jstracker.js^
+^tb/tracker/index.js^
+^collina.js^
+um.js^
+@@um.js^$domain=login.taobao.com
+^tanx^$xmlhttprequest,script
+^loggw^$xmlhttprequest,script
 ^logflow^
 ^tracker
 ^WebUMID^
@@ -32,3 +34,6 @@ blog.csdn.net##.floatR.feed
 
 ||baidu.com$third-party
 ||baidustatic.com$third-party
+
+! 包含了令人讨厌的脚本的网站
+||vircloud.net$image,script,xmlhttprequest
