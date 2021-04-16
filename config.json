@@ -3,54 +3,91 @@
         "8.8.8.8",
         "1.1.1.1"
     ],
-    "surfboard_output": {
-        "output_name": "surfboard-rules.conf",
-        "parts": [
-            {
-                "type": "base",
-                "action_replace": {
-                    "REJECT": "AdBlock",
-                    "DIRECT": "DefaultAction"
+    "full_rule_outputs": [
+        {
+            "target_software": "surfboard",
+            "output_name": "surfboard-rules.conf",
+            "parts": [
+                {
+                    "type": "base",
+                    "action_replace": {
+                        "REJECT": "AdBlock",
+                        "DIRECT": "DefaultAction"
+                    },
+                    "files": [
+                        "./surfboard/surfboard-template.conf"
+                    ]
                 },
-                "files": [
-                    "./surfboard/surfboard-template.conf",
-                    "./surfboard/surfboard-custom-rule-pre.conf"
-                ]
-            },
-            {
-                "type": "hostnames",
-                "minify": true,
-                "action_replace": {
-                    "REJECT": "AdBlock",
-                    "DIRECT": "DefaultAction"
+                {
+                    "type": "surge-like-rules",
+                    "minify": true,
+                    "action_replace": {
+                        "REJECT": "AdBlock",
+                        "DIRECT": "DefaultAction"
+                    },
+                    "files": [
+                        "./common-rules/common-rules.conf",
+                        "./generated_rules/custom-hostnames.conf",
+                        "./generated_rules/easylist-hostnames.conf",
+                        "./generated_rules/easylist-chn-hostnames.conf",
+                        "./generated_rules/adguard-dns-hostnames.conf"
+                    ]
                 },
-                "files": [
-                    "./generated_rules/custom-hostnames.conf",
-                    "./generated_rules/easylist-hostnames.conf",
-                    "./generated_rules/easylist-chn-hostnames.conf",
-                    "./generated_rules/adguard-dns-hostnames.conf"
-                ]
-            },
-            {
-                "type": "base",
-                "files": [
-                    "./surfboard/surfboard-custom-rule-medium.conf"
-                ]
-            },
-            {
-                "type": "hostnames",
-                "files": [
-                    "./generated_rules/gfwlist-hostnames.conf"
-                ]
-            },
-            {
-                "type": "base",
-                "files": [
-                    "./surfboard/surfboard-custom-rule-last.conf"
-                ]
-            }
-        ]
-    },
+                {
+                    "type": "base",
+                    "files": [
+                        "./common-rules/common-medium.conf"
+                    ]
+                },
+                {
+                    "type": "surge-like-rules",
+                    "files": [
+                        "./generated_rules/gfwlist-hostnames.conf"
+                    ]
+                },
+                {
+                    "type": "base",
+                    "files": [
+                        "./common-rules/common-final.conf"
+                    ]
+                }
+            ]
+        },
+        {
+            "target_software": "clash",
+            "output_name": "clash-rules.conf",
+            "parts": [
+                {
+                    "type": "base",
+                    "action_replace": {
+                        "REJECT": "AdBlock",
+                        "DIRECT": "DefaultAction"
+                    },
+                    "files": [
+                        "./clash/clash-template-pre.conf"
+                    ]
+                },
+                {
+                    "type": "surge-like-rules",
+                    "minify": true,
+                    "action_replace": {
+                        "REJECT": "AdBlock",
+                        "DIRECT": "DefaultAction"
+                    },
+                    "files": [
+                        "./common-rules/common-rules.conf",
+                        "./generated_rules/custom-hostnames.conf",
+                        "./generated_rules/easylist-hostnames.conf",
+                        "./generated_rules/easylist-chn-hostnames.conf",
+                        "./generated_rules/adguard-dns-hostnames.conf",
+                        "./common-rules/common-medium.conf",
+                        "./generated_rules/gfwlist-hostnames.conf",
+                        "./common-rules/common-final.conf"
+                    ]
+                }
+            ]
+        }
+    ],
     "servers": [
     ],
     "rules_list": [
