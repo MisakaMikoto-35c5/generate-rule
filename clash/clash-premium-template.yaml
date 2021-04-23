@@ -1,0 +1,152 @@
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+## ！！！只有这份文件的端口设置会随ClashX启动生效
+
+## 如果您不知道如何操作，请参阅 官方Github文档 https://github.com/Dreamacro/clash/blob/dev/README.md
+#---------------------------------------------------#
+
+# (HTTP and SOCKS5 in one port)
+mixed-port: 7890
+# RESTful API for clash
+external-controller: 127.0.0.1:9090
+allow-lan: false
+mode: rule
+log-level: warning
+
+proxies:
+  - name: "Tor"
+    type: socks5
+    server: 127.0.0.1
+    port: 9050
+
+  - name: "Proxy 1"
+    type: ss
+    server: 202.96.128.86
+    port: 8338
+    cipher: rc4-md5
+    password: "123456"
+    plugin: obfs
+    plugin-opts:
+      mode: http
+      host: hm.baidu.com
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - "Proxy 1"
+      - "Tor"
+  # tolerance: 150
+  # lazy: true
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+
+  - name: "LAN"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+
+  - name: "AdBlock"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+      - Tor
+
+  - name: "PhoneNumberLeaks"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+      - Tor
+
+  - name: "LongConnectionServices"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+      - Tor
+
+  - name: "GoogleServices"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+      - Tor
+
+  - name: "JapanStrictProxy"
+    type: select
+    proxies: 
+      - REJECT
+      - DIRECT
+      - PROXY
+      - Tor
+
+  - name: "ChinaAction"
+    type: select
+    proxies: 
+      - DIRECT
+      - PROXY
+      - Tor
+      - REJECT
+
+  - name: "DefaultAction"
+    type: select
+    proxies: 
+      - DIRECT
+      - PROXY
+      - Tor
+      - REJECT
+
+rule-providers:
+  GFWlistExcluded:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/gfwlist-clash_direct_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/gfwlist-clash_direct_hostnames.yaml
+
+  GFWlist:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/gfwlist-clash_proxy_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/gfwlist-clash_proxy_hostnames.yaml
+
+  AdGuard:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/adguard-dns-clash_reject_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/adguard-dns-clash_reject_hostnames.yaml
+
+  CustomRules:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/custom-clash_reject_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/custom-clash_reject_hostnames.yaml
+
+  EasyList:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/easylist-clash_reject_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/easylist-clash_reject_hostnames.yaml
+
+  EasyList-CHN:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/easyprivacy-clash_reject_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/easyprivacy-clash_reject_hostnames.yaml
+
+  EasyPrivacy:
+    type: http
+    behavior: classical
+    path: ./profiles/rule-providers/easylist-chn-clash_reject_hostnames.yaml
+    url: https://lab.wsl.moe/quantumult_rules_test/easylist-chn-clash_reject_hostnames.yaml
+
+rules:

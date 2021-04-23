@@ -138,6 +138,8 @@
 ||tingyun.com^
 ||norma-external-collect.meizu.com^
 ||sdk.api.oaid.wocloud.cn^
+||gzads.com^
+||gz-data.com^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^

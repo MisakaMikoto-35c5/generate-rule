@@ -107,6 +107,21 @@ class AdblockRuleDecoder:
             'regex_rejection': regex_rejection_ruleset
         }
 
+    def convert_rule_to_clash(self, ruleset):
+        file_header = 'payload:\n'
+        clash_action_rules = {}
+        for i in ruleset:
+            if i['prefer'] == 'HOST-SUFFIX' or i['prefer'] == 'HOST-KEYWORD' or i['prefer'] == 'HOST':
+                if i['domain'] == '':
+                    continue
+                if self.__uniq(i['domain']):
+                    try:
+                        clash_action_rules[i['action'].lower()] += '  - ' + self.convert_action_name(i['prefer'], 'clash') + ',' + i['domain'] + '\n'
+                    except KeyError:
+                        clash_action_rules[i['action'].lower()] = file_header + '  - ' + self.convert_action_name(i['prefer'], 'clash') + ',' + i['domain'] + '\n'
+        self.__clear_uniq_cache()
+        return clash_action_rules
+
     def make_full_rule(self, parts, target_software = 'surfboard'):
         match_type_prefix = ''
         if target_software == 'clash':

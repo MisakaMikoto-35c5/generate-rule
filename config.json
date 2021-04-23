@@ -27,10 +27,10 @@
                     },
                     "files": [
                         "./common-rules/common-rules.conf",
-                        "./generated_rules/custom-hostnames.conf",
-                        "./generated_rules/easylist-hostnames.conf",
-                        "./generated_rules/easylist-chn-hostnames.conf",
-                        "./generated_rules/adguard-dns-hostnames.conf"
+                        "./generated_rules/custom-quantumult_hostnames.conf",
+                        "./generated_rules/easylist-quantumult_hostnames.conf",
+                        "./generated_rules/easylist-chn-quantumult_hostnames.conf",
+                        "./generated_rules/adguard-dns-quantumult_hostnames.conf"
                     ]
                 },
                 {
@@ -42,7 +42,7 @@
                 {
                     "type": "surge-like-rules",
                     "files": [
-                        "./generated_rules/gfwlist-hostnames.conf"
+                        "./generated_rules/gfwlist-quantumult_hostnames.conf"
                     ]
                 },
                 {
@@ -55,7 +55,7 @@
         },
         {
             "target_software": "clash",
-            "output_name": "clash-rules.conf",
+            "output_name": "clash-rules.yaml",
             "parts": [
                 {
                     "type": "base",
@@ -76,12 +76,40 @@
                     },
                     "files": [
                         "./common-rules/common-rules.conf",
-                        "./generated_rules/custom-hostnames.conf",
-                        "./generated_rules/easylist-hostnames.conf",
-                        "./generated_rules/easylist-chn-hostnames.conf",
-                        "./generated_rules/adguard-dns-hostnames.conf",
+                        "./generated_rules/custom-quantumult_hostnames.conf",
+                        "./generated_rules/easylist-quantumult_hostnames.conf",
+                        "./generated_rules/easylist-chn-quantumult_hostnames.conf",
+                        "./generated_rules/easyprivacy-quantumult_hostnames.conf",
+                        "./generated_rules/adguard-dns-quantumult_hostnames.conf",
                         "./common-rules/common-medium.conf",
-                        "./generated_rules/gfwlist-hostnames.conf",
+                        "./generated_rules/gfwlist-quantumult_hostnames.conf",
+                        "./common-rules/common-final.conf"
+                    ]
+                }
+            ]
+        },
+        {
+            "target_software": "clash",
+            "output_name": "clash-premium-rules.yaml",
+            "parts": [
+                {
+                    "type": "base",
+                    "files": [
+                        "./clash/clash-premium-template.yaml"
+                    ]
+                },
+                {
+                    "type": "surge-like-rules",
+                    "minify": true,
+                    "action_replace": {
+                        "REJECT": "AdBlock",
+                        "DIRECT": "DefaultAction"
+                    },
+                    "files": [
+                        "./common-rules/common-rules.conf",
+                        "./clash/clash-premium-rules-pre.conf",
+                        "./common-rules/common-medium.conf",
+                        "./clash/clash-premium-rules-medium.conf",
                         "./common-rules/common-final.conf"
                     ]
                 }
