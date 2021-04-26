@@ -4,7 +4,7 @@
 ||analytics.
 !||log.
 ||loggw.
-||logs.
+!||logs.
 ||beacon.
 
 ! Google
@@ -43,10 +43,14 @@
 ||h-adashx.ut.taobao.com^
 ||atm.youku.com^
 ||iyes.youku.com^
-! 测试规则
 ||umdc.aliapp.org^
 ||hybrid.miniapp.taobao.com^
 ||audid-api.taobao.com^
+! 测试规则
+||ossgw.alicdn.com^
+||ynuf.aliapp.org^
+||tdum.alibaba.com^
+||cf.aliyun.com^
 
 ! 百度系
 ||hmma.baidu.com^
@@ -108,9 +112,13 @@
 ! 网易
 ||lbs.netease.im^
 ||crash.163.com^
-! 测试规则
-||interface3.music.163.com^
+||ac.dun.163yun.com^
 ||dun.163.com^
+! 测试规则
+!||interface3.music.163.com^
+||iadmusicmat.music.126.net^
+||mam.netease.com^
+||mam6.netease.com^
 
 ! 艾瑞信（跟踪）
 ||iresearch.cn^
@@ -140,6 +148,7 @@
 ||sdk.api.oaid.wocloud.cn^
 ||gzads.com^
 ||gz-data.com^
+||hockeyapp.net^
 
 ! 网站内部跟踪器
 ||bigdata.samsung.com.cn^
@@ -173,16 +182,16 @@
 ||weisheng.com^
 
 ! 可能有跟踪行为的第三方 SDK
-@@||talk.gepush.com^
-@@||talk.getui.com^
-@@|xfr-ss.getui.com^
-@@|c-ss.getui.com^
-@@|cm-10-26.getui.com^
-||getui.com^
-||getui.net^
-||gepush.com^
-||jpush.cn^
-||jpush.io^
+!@@||talk.gepush.com^
+!@@||talk.getui.com^
+!@@|xfr-ss.getui.com^
+!@@|c-ss.getui.com^
+!@@|cm-10-26.getui.com^
+!||getui.com^
+!||getui.net^
+!||gepush.com^
+!||jpush.cn^
+!||jpush.io^
 !||japps.cn^
 ||mob.com^
 ||talkingdata.com^
@@ -191,6 +200,9 @@
 ||sousoudus.com^
 ||junshizhan.cn^
 ||xinxiansk.com^
+
+! 第一方跟踪器
+||log-upload.mihoyo.com^
 
 ! 拼多多（测试规则）
 ||cmtw.pinduoduo.com^

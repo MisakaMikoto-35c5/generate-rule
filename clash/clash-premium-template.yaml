@@ -46,9 +46,9 @@ proxy-groups:
   - name: "LAN"
     type: select
     proxies: 
-      - REJECT
       - DIRECT
       - PROXY
+      - REJECT
 
   - name: "AdBlock"
     type: select
@@ -66,29 +66,13 @@ proxy-groups:
       - PROXY
       - Tor
 
-  - name: "LongConnectionServices"
-    type: select
-    proxies: 
-      - REJECT
-      - DIRECT
-      - PROXY
-      - Tor
-
-  - name: "GoogleServices"
-    type: select
-    proxies: 
-      - REJECT
-      - DIRECT
-      - PROXY
-      - Tor
-
   - name: "JapanStrictProxy"
     type: select
     proxies: 
-      - REJECT
       - DIRECT
       - PROXY
       - Tor
+      - REJECT
 
   - name: "ChinaAction"
     type: select

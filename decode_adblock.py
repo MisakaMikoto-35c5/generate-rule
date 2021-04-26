@@ -154,6 +154,12 @@ class AdblockRuleDecoder:
                         rule = rule.split(',')
                         if rule[0] in ['FINAL', 'MATCH']:
                             match_type = self.convert_action_name(rule[0], target_software)
+                            action = rule[1]
+                            if action_replace != None:
+                                try:
+                                    action = action_replace[action]
+                                except KeyError:
+                                    pass
                             config_file +=  f'{match_type_prefix}{match_type},{action}\n'
                             self.__clear_uniq_cache()
                             return config_file

@@ -38,3 +38,5 @@ blog.csdn.net##.floatR.feed
 ! 包含了令人讨厌的脚本的网站
 ||vircloud.net^$image,script,xmlhttprequest
 ||cnblogs.com/*Marydon20170307^$script
+
+||api.leetcode-cn.com/api/is_china_ip^$third-party
