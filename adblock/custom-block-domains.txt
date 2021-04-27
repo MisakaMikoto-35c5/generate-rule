@@ -112,10 +112,11 @@
 ! 网易
 ||lbs.netease.im^
 ||crash.163.com^
-||ac.dun.163yun.com^
+||dun.163yun.com^
 ||dun.163.com^
+||cstaticdun.126.net^
+||nstool.netease.com^
 ! 测试规则
-!||interface3.music.163.com^
 ||iadmusicmat.music.126.net^
 ||mam.netease.com^
 ||mam6.netease.com^
@@ -163,6 +164,7 @@
 |oort-shipper.kakamobi.cn^
 |telepathy.kakamobi.com^
 |jiaxiao-awd.kakamobi.cn^
+|tj.makeding.com^
 
 ! 数据收集，详见 https://tech.sina.com.cn/i/2019-03-25/doc-ihsxncvh5289363.shtml
 ||zzhc.vnet.cn^
