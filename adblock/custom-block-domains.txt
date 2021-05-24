@@ -108,23 +108,33 @@
 ! 京东
 ||dg.k.jd.com^
 ||orbit.jd.com^
+||knicks.jd.com^
+||mercury.jd.com^
+||diviner.jd.com^
 
 ! 网易
 ||lbs.netease.im^
 ||crash.163.com^
 ||dun.163yun.com^
 ||dun.163.com^
+||clientlog3.music.163.com^
 ||cstaticdun.126.net^
 ||nstool.netease.com^
+||nstool.haowu.link^
+||nstool.zhuanzfx.com^
+||nstool.laiqukankan.com^
+||outsea.yun-app.net^
 ! 测试规则
 ||iadmusicmat.music.126.net^
 ||mam.netease.com^
 ||mam6.netease.com^
+||apm3.music.163.com^
 
 ! 艾瑞信（跟踪）
 ||iresearch.cn^
 ||iresearch.com.cn^
 ||iresearchchina.com^
+||irs03.com^
 
 ! 360
 ||50union.com^
@@ -150,8 +160,10 @@
 ||gzads.com^
 ||gz-data.com^
 ||hockeyapp.net^
+||ip.ws.126.net^
 
 ! 网站内部跟踪器
+||data.microsoft.com^
 ||bigdata.samsung.com.cn^
 |pv.news18a.com^
 |pv.sohu.com^
@@ -179,7 +191,7 @@
 ||oia.zhihu.com^
 
 ! 某些不良厂商会强制跳转到这个域名赚广告费
-||u.jd.com^
+!||u.jd.com^
 ||vchangyi.com^
 ||weisheng.com^
 
