@@ -14,11 +14,11 @@ jobs:
       - name: Generate release tag
         id: tag
         run: |
-          echo "::set-output name=release_tag::generate_$(date +"%Y.%m.%d_%H-%M")"
+          echo "release_tag=generate_$(date +"%Y.%m.%d_%H-%M")" >> $GITHUB_OUTPUT
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.tag.outputs.release_tag }}
           files: |
-            ./generate_rules/*
+            ./generated_rules/*
           token: ${{ secrets.GITHUB_TOKEN }}
