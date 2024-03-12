@@ -27,4 +27,24 @@ name-unbound_dns.conf: 只包含 Unbound 域名规则的文件
 
 其中，默认配置文件还配置了 `surfboard-rules.conf` 的输出，包含 EasyPrivacy、EasyList、EasyList CHN、GFWlist 和 AdGuard DNS Filter。
 
-[生成的输出样例可以在这里找到](https://lab.wsl.moe/quantumult_rules_test/)。
+## 直接引用生成好的规则
+
+大多数用户并不需要自己手动生成规则，因此你可以通过 `https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/` 加上你需要的文件名来总是获取最新生成的规则列表，这些规则可以在支持引用外部规则列表的客户端（譬如 Clash Permium, QuantumultX）当中使用，这个项目的规则被设置为每周更新一次。下面是几个常用的地址的样例：
+
+### Clash Permium 系列
+```
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/adguard-dns-clash_reject_hostnames.yaml
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easylist-clash_reject_hostnames.yaml
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easylist-chn-clash_reject_hostnames.yaml
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easyprivacy-clash_reject_hostnames.yaml
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/gfwlist-clash_proxy_hostnames.yaml
+```
+
+### Quantumult(X) 系列
+```
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/adguard-dns-quantumult_hostnames.conf
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easylist-chn-quantumult_hostnames.conf
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easylist-quantumult_hostnames.conf
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/easyprivacy-quantumult_hostnames.conf
+https://github.com/MisakaMikoto-35c5/generate-rule/releases/latest/download/gfwlist-quantumult_hostnames.conf
+```
