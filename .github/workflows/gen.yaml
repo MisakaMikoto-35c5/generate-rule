@@ -1,0 +1,26 @@
+name: generate rule list
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' 
+      - run: python generate_list.py
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "release_tag=generate_$(date +"%Y.%m.%d_%H-%M")" >> $GITHUB_OUTPUT
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          files: |
+            ./generated_rules/*
+          token: ${{ secrets.GITHUB_TOKEN }}
